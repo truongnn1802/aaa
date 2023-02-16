@@ -1,12 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
   useEffect(()=>{
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
-      .then(response => response.json())
-      .then(json => console.log(json))
+    const res = axios.post(
+      'http://103.11.199.96:8069/api/auth/token',
+      {},
+      {
+        headers: {
+          login: 'admin',
+          password: 1,
+          db: 'HRM'
+        }
+      }
+    )
+    console.log(res)
   },[])
   return (
     <div className="App">
